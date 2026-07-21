@@ -18,9 +18,9 @@ jobs:
       - name: Setup Android SDK
         uses: android-actions/setup-android@v3
 
-      - name: Grant execute permission for gradlew
+      - name: Downgrade Gradle to 8.5 for compatibility
         run: |
-          gradle wrapper
+          gradle wrapper --gradle-version 8.5
           chmod +x gradlew
 
       - name: Build Debug APK

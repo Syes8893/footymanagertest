@@ -18,9 +18,9 @@ jobs:
       - name: Setup Android SDK
         uses: android-actions/setup-android@v3
 
-      - name: Force Gradle 8.5 Wrapper
+      - name: Initialize Gradle Wrapper 8.5
         run: |
-          ./gradlew wrapper --gradle-version 8.5
+          gradle wrapper --gradle-version 8.5
           chmod +x gradlew
 
       - name: Build Debug APK

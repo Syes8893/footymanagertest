@@ -18,13 +18,13 @@ jobs:
       - name: Setup Android SDK
         uses: android-actions/setup-android@v3
 
-      - name: Downgrade Gradle to 8.5 for compatibility
+      - name: Generate Gradle Wrapper 8.5
         run: |
-          gradle wrapper --gradle-version 8.5
+          gradle wrapper --gradle-version 8.5 --distribution-type bin
           chmod +x gradlew
 
-      - name: Build Debug APK
-        run: ./gradlew assembleDebug
+      - name: Build Debug APK with Gradle Wrapper
+        run: ./gradlew assembleDebug --no-daemon
 
       - name: Upload APK Artifact
         uses: actions/upload-artifact@v4

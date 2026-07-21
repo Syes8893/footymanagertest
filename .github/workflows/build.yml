@@ -18,13 +18,13 @@ jobs:
       - name: Setup Android SDK
         uses: android-actions/setup-android@v3
 
-      - name: Generate Gradle Wrapper 8.5
+      - name: Force Gradle 8.5 Wrapper
         run: |
-          gradle wrapper --gradle-version 8.5 --distribution-type bin
+          ./gradlew wrapper --gradle-version 8.5
           chmod +x gradlew
 
-      - name: Build Debug APK with Gradle Wrapper
-        run: ./gradlew assembleDebug --no-daemon
+      - name: Build Debug APK
+        run: ./gradlew assembleDebug --stacktrace
 
       - name: Upload APK Artifact
         uses: actions/upload-artifact@v4
